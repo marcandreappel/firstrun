@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FirstRun</string>
+    <string name="text_first_run_install">Premier lancement après l\'installation.</string>
+    <string name="text_first_run_install_sub">Récompilez l\'application pour augmenter le build code.</string>
+    <string name="text_first_run_version">Premier lancement après une mise à jour.</string>
+    <string name="text_first_run_version_sub">Executez \"Build → Clean Project\" pour une remise à zéro.</string>
+    <string name="text_first_run_normal">Lancement normale de l\'application.</string>
+    <string name="this_version_label">Cette version :</string>
+    <string name="last_version_label">Dernière version connue :</string>
+</resources>

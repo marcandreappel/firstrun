@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FirstRun</string>
+    <string name="text_first_run_install">First run after installation.</string>
+    <string name="text_first_run_install_sub">Recompile the application to augment the build code.</string>
+    <string name="text_first_run_version">First run after an update.</string>
+    <string name="text_first_run_version_sub">Run \"Build → Clean Project\" to reset the application.</string>
+    <string name="text_first_run_normal">Normal run of the application.</string>
+    <string name="this_version_label">This version:</string>
+    <string name="last_version_label">Last known version:</string>
+</resources>
