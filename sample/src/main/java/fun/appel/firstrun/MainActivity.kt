@@ -1,43 +1,48 @@
 package `fun`.appel.firstrun
 
-import `fun`.appel.library.FirstRun
-import `fun`.appel.library.FirstRunStatus
+import android.annotation.SuppressLint
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val firstRunStatus = FirstRun(this).status()
-
-        when (firstRunStatus) {
-            FirstRunStatus.FIRST_RUN_INSTALL -> {
+        when (val runType = FirstRun(this).status()) {
+            RunType.INSTALL -> {
                 primary_text.text = resources.getText(R.string.text_first_run_install)
-                secondary_text.text = resources.getText(R.string.text_first_run_install_sub)
+                secondary_text.text = resources.getText(R.string.text_first_run_install_subtitle)
             }
-            FirstRunStatus.FIRST_RUN_VERSION -> {
-                primary_text.text = resources.getText(R.string.text_first_run_version)
-                secondary_text.text = resources.getText(R.string.text_first_run_version_sub)
-            }
-            else -> {
+            RunType.NORMAL -> {
                 primary_text.text = resources.getText(R.string.text_first_run_normal)
                 secondary_text.visibility = View.GONE
             }
+            else -> {
+                val append = when (runType) {
+                    RunType.MAJOR -> " Major update."
+                    RunType.MINOR -> " Minor update."
+                    RunType.PATCH -> " Patch update."
+                    else -> " Code update only."
+                }
+                val text = resources.getText(R.string.text_first_run_update)
+                primary_text.text = "$text $append"
+                secondary_text.text = resources.getText(R.string.text_first_run_update_subtitle)
+            }
         }
 
-        val lastVersion = getSharedPreferences(FirstRun.FIRST_RUN_SETTINGS, Context.MODE_PRIVATE)
-                .getInt(FirstRun.FIRST_RUN_LAST_APPLICATION_VERSION, 999)
-        LAST_VERSION.text = lastVersion.toString()
+        val version = getSharedPreferences(FirstRun.SETTINGS, Context.MODE_PRIVATE)
+                .getString(FirstRun.VERSION, "0.0.0")
+        VERSION.text = version
 
-        val thisVersion = packageManager
+        @Suppress("DEPRECATION") val code = packageManager
                 .getPackageInfo(packageName, 0)
                 .versionCode
-        THIS_VERSION.text = thisVersion.toString()
+        CODE.text = code.toString()
     }
 }

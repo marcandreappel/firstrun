@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="PRIMARY_TEXT"
+        tools:text="PRIMARY_TEXT"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -27,7 +28,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="SECONDARY_TEXT"
+        tools:text="SECONDARY_TEXT"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,19 +39,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="@string/last_version_label"
+        android:text="@string/version_label"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:layout_constraintBaseline_toBaselineOf="@+id/LAST_VERSION"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        tools:text="Dernière version connue :" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/VERSION"
+        app:layout_constraintEnd_toStartOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/LAST_VERSION"
+        android:id="@+id/VERSION"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:text="LAST_VERSION"
+        tools:text="VERSION"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/secondary_text" />
 
@@ -59,27 +59,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="@string/this_version_label"
+        android:text="@string/code_label"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:layout_constraintBaseline_toBaselineOf="@+id/THIS_VERSION"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        tools:text="Cette version :" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/CODE"
+        app:layout_constraintEnd_toStartOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/THIS_VERSION"
+        android:id="@+id/CODE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="THIS_VERSION"
+        tools:text="CODE"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/LAST_VERSION" />
+        app:layout_constraintTop_toBottomOf="@+id/VERSION" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
